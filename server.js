@@ -1,36 +1,69 @@
-const http = require('http');
-const fs = require('fs');
+// HTML filmdagi obyektlar
+var data = [
+  {
+      ID: 1010,
+      Isim: "Orzubek",
+      Familya: "Kamariddinoov",
+      Yosh: 18,
+      "Soch rangi": "Qora",
+      Boyi: 190
+  },
+  {
+      ID: 1020,
+      Isim: "John",
+      Familya: "Doe",
+      Yosh: 30,
+      "Soch rangi": "Qizil",
+      Boyi: 180
+  },
+  {
+      ID: 1030,
+      Isim: "Alice",
+      Familya: "Smith",
+      Yosh: 25,
+      "Soch rangi": "Oq",
+      Boyi: 170
+  },
+  {
+      ID: 1040,
+      Isim: "Fatima",
+      Familya: "Khan",
+      Yosh: 22,
+      "Soch rangi": "Qora",
+      Boyi: 165
+  },
+  {
+      ID: 1050,
+      Isim: "Max",
+      Familya: "Johnson",
+      Yosh: 28,
+      "Soch rangi": "Oq",
+      Boyi: 175
+  },
+  // Qolgan obyektlar...
+  // 20 ta obyekt
+];
 
-http.createServer(function (req, res) {
-  fs.readFile('index.html', function(err, data) {
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.write(data);
-    return res.end();
-  });
-}).listen(8080);
+function searchByID() {
+  var searchID = parseInt(document.getElementById("searchInput").value); // ID ni olish
+  var resultDiv = document.getElementById("result");
+  resultDiv.innerHTML = ""; // Natijani qayta yozishdan oldin divni bo'shatish
 
-const http = require('http');
-const formidable = require('formidable');
-
-http.createServer(function (req, res) {
-  if (req.url == '/fileupload') {
-    var form = new formidable.IncomingForm();
-    form.parse(req, function (err, fields, files) {
-      res.write('File uploaded');
-      res.end();
-    });
-  } else {
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.write('<form action="fileupload" method="post" enctype="multipart/form-data">');
-    res.write('<input type="file" name="filetoupload"><br>');
-    res.write('<input type="submit">');
-    res.write('</form>');
-    return res.end();
+  // Obyektlarni qidirish
+  var found = false;
+  for (var i = 0; i < data.length; i++) {
+      if (data[i].ID === searchID) {
+          found = true;
+          for (var key in data[i]) {
+              if (data[i].hasOwnProperty(key)) {
+                  resultDiv.innerHTML += "<p>" + key + ": " + data[i][key] + "</p>";
+              }
+          }
+          break;
+      }
   }
-}).listen(8080);
 
-console.log('Salom, ');
-setTimeout(() => {
-  console.log('dunyo!');
-}, 2000);
-console.log('Node.js');
+  if (!found) {
+      resultDiv.innerHTML = "Bunday ID topilmadi";
+  }
+}
