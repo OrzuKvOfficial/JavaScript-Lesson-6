@@ -1,3 +1,42 @@
+const styleElement = document.createElement('style');
+    styleElement.innerHTML = `
+        .navbar-custom {
+            background-color: #007bff;
+        }
+        
+        .navbar-brand-custom {
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .search-input {
+            width: 250px;
+        }
+        
+        .search-button {
+            background-color: #ffffff;
+            color: #007bff;
+        }
+        
+        #result {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #f9f9f9;
+        }
+        
+        .data-item {
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+        
+        .data-label {
+            font-weight: bold;
+        }
+    `;
+    document.head.appendChild(styleElement);
+
 var data = [
     {
         ID: 1010,
