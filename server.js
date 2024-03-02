@@ -67,3 +67,4 @@ function searchByID() {
       resultDiv.innerHTML = "Bunday ID topilmadi";
   }
 }
+
