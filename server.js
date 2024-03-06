@@ -181,18 +181,7 @@ var data = [
     displayValue += op; // Update display with the operator
     document.getElementById("display").value = displayValue; // Update display
   }
-  // HTML özel karakterlerini escape etme
-function escapeHtml(unsafe) {
-  return unsafe
-       .replace(/&/g, "&amp;")
-       .replace(/</g, "&lt;")
-       .replace(/>/g, "&gt;")
-       .replace(/"/g, "&quot;")
-       .replace(/'/g, "&#039;");
+  // Sayfanın gömülü olup olmadığını kontrol etme
+if (window.self !== window.top) {
+  window.top.location = window.self.location;
 }
-
-// Kullanıcı girişi gibi potansiyel olarak tehlikeli verileri güvenli hale getirme
-var userInput = "<script>alert('XSS attack!');</script>";
-var safeInput = escapeHtml(userInput);
-document.getElementById("output").innerHTML = safeInput;
-
