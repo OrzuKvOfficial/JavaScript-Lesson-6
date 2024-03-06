@@ -100,3 +100,28 @@ var data = [
     let result = eval(expression);
     document.getElementById("display").value = result;
   }
+  let currentExpression = ''; // Store current expression
+
+  function appendToDisplay(value) {
+    currentExpression += value; // Append value to expression
+    document.getElementById("display").value = currentExpression; // Update display
+  }
+
+  function clearDisplay() {
+    currentExpression = ''; // Clear expression
+    document.getElementById("display").value = ''; // Clear display
+  }
+
+  function calculateResult() {
+    try {
+      let result = eval(currentExpression); // Evaluate expression
+      if (result === Infinity || isNaN(result)) {
+        throw new Error('Invalid expression');
+      }
+      document.getElementById("display").value = result; // Update display with result
+      currentExpression = ''; // Clear current expression
+    } catch (error) {
+      alert('Invalid expression'); // Handle invalid expressions
+      clearDisplay(); // Clear display
+    }
+  }
