@@ -125,3 +125,59 @@ var data = [
       clearDisplay(); // Clear display
     }
   }
+
+  
+  let displayValue = ''; // Store current display value
+  let firstOperand = ''; // Store first operand
+  let operator = ''; // Store operator
+
+  function appendToDisplay(value) {
+    displayValue += value; // Append value to display
+    document.getElementById("display").value = displayValue; // Update display
+  }
+
+  function clearDisplay() {
+    displayValue = ''; // Clear display value
+    document.getElementById("display").value = ''; // Clear display
+  }
+
+  function calculateResult() {
+    if (displayValue === '') return; // If display is empty, return
+    if (operator === '' || firstOperand === '') return; // If operator or first operand is missing, return
+
+    let secondOperand = displayValue.slice(firstOperand.length + 1); // Get second operand
+    let result;
+    
+    switch(operator) { // Perform calculation based on operator
+      case '+':
+        result = parseFloat(firstOperand) + parseFloat(secondOperand);
+        break;
+      case '-':
+        result = parseFloat(firstOperand) - parseFloat(secondOperand);
+        break;
+      case '*':
+        result = parseFloat(firstOperand) * parseFloat(secondOperand);
+        break;
+      case '/':
+        result = parseFloat(firstOperand) / parseFloat(secondOperand);
+        break;
+      default:
+        return; // Invalid operator, return
+    }
+
+    document.getElementById("display").value = result; // Update display with result
+    displayValue = ''; // Clear display value
+    firstOperand = ''; // Clear first operand
+    operator = ''; // Clear operator
+  }
+
+  function setOperator(op) {
+    if (displayValue === '') return; // If display is empty, return
+    if (operator !== '' && firstOperand !== '') {
+      calculateResult(); // If there's an existing operator and operand, calculate the result first
+    }
+    operator = op; // Set the operator
+    firstOperand = displayValue; // Store the first operand
+    displayValue += op; // Update display with the operator
+    document.getElementById("display").value = displayValue; // Update display
+  }
