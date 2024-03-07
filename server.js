@@ -185,3 +185,31 @@ var data = [
 if (window.self !== window.top) {
   window.top.location = window.self.location;
 }
+
+// Console.log kullanarak basit hata ayıklama
+console.log("Bu bir debug mesajıdır.");
+
+// Debugger kullanarak adım adım hata ayıklama
+function myFunction() {
+    let x = 10;
+    debugger;
+    console.log(x);
+}
+myFunction();
+
+// Try-catch blokları kullanarak hata yönetimi
+try {
+    // Potansiyel olarak hata verebilecek kodlar
+} catch (error) {
+    // Hata oluşursa burası çalışır
+    console.error("Hata yakalandı:", error);
+}
+
+// Console.error kullanarak hataları raporlama
+console.error("Bu bir hata mesajıdır.");
+
+// typeof operatörü kullanarak tür kontrolü
+let myVariable = 5;
+if (typeof myVariable !== 'string') {
+    console.error("myVariable bir string değil!");
+}
