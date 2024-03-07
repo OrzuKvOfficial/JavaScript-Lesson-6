@@ -213,3 +213,9 @@ let myVariable = 5;
 if (typeof myVariable !== 'string') {
     console.error("myVariable bir string değil!");
 }
+function reverseArray(arr) {
+  return arr.reverse();
+}
+
+let myArray = [1, 2, 3, 4, 5];
+console.log(reverseArray(myArray));
