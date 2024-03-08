@@ -225,3 +225,21 @@ var matn = "Assalomu alaykum, dunyo!";
 
 // Matnni konsolga chiqarish
 console.log(matn);
+
+function yuborish() {
+  // Matnni olish
+  var matn = "Assalomu alaykum, dunyo!";
+
+  // Matnni HTML div elementiga joylash
+  document.getElementById("matnDiv").innerHTML = matn;
+
+  // Email manzilini sozlash
+  var emailManzil = "example@example.com";
+  var subject = "Salom";
+
+  // Email yuborish uchun link yaratish
+  var emailLink = "mailto:" + emailManzil + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(matn);
+
+  // Emailni yuborish
+  window.location.href = emailLink;
+}
