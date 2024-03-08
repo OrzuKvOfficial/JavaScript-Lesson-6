@@ -219,3 +219,9 @@ function reverseArray(arr) {
 
 let myArray = [1, 2, 3, 4, 5];
 console.log(reverseArray(myArray));
+
+// Matnni yozish
+var matn = "Assalomu alaykum, dunyo!";
+
+// Matnni konsolga chiqarish
+console.log(matn);
